@@ -1,0 +1,16 @@
+label{
+    font-weight: bold;
+    color: aqua;
+    background-color: rgb(4, 107, 107);
+    padding: 1px;
+}
+input{
+    width: 15%;
+    
+   display: inline-flex;
+}
+img{
+    width:250px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}

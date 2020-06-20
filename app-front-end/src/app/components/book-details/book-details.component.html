@@ -1,0 +1,60 @@
+<div class="container mt-4 ">
+
+  <div class="row ">     
+    <div class="col-lg-3 ">
+
+      <app-categories></app-categories>
+
+    </div>
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-9">
+      <div class="row ">
+        <div class="card mb-4" style="max-width: 950px;">
+          <div class="row no-gutters">
+            <div class="col-md-4 ">
+              <img [src]="bookDetails.imageUrl" class="card-img img-responsive">
+            </div>
+
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{bookDetails.name}}</h5>
+                <p class="card-text"><label> Description </label> {{bookDetails.description}}</p>
+                <p class="card-text"><label> Price </label> {{bookDetails.price | currency :' $ '}}</p>
+                <p class="card-text"><label> Qty. Available </label> {{bookDetails.stockUnits}}</p>
+                <hr />
+               
+                <span class="mr-1 inline">Req. Quantity</span>
+                <input type="number" #quantity class="form-control mr-1 mb-2"  (input)="quantityChange($event)" min="1" [max]="bookDetails.stockUnits">
+                <span class="text-danger" [class.d-none]="!hasError">
+                 quantity must be from 1 to {{bookDetails.stockUnits}}
+                </span><br>
+                <button class="btn btn-success mr-1" data-toggle="tooltip" data-placement="top" title="add to your cart"
+                [class.disabled]="isDisabled" (click)="addToCart(quantity.value)">
+                  <i class="fas fa-cart-arrow-down mr-2"></i>Add To Cart</button>
+                <button class="btn btn-primary " (click)="backToPrevious()" data-toggle="tooltip" data-placement="top"
+                  title="back to previous page">
+                  <i class="fas fa-arrow-left mr-2"></i>Back</button>
+                
+
+               <!-- /.card-body -->
+              </div>
+              <!-- /.col-md-8 -->
+            </div>
+            <!--row no-gutters-->
+          </div>
+          <!-- /.card mb-4 -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- jquery code for adding tooltips to controls  -->
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>

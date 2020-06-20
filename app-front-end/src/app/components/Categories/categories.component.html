@@ -1,0 +1,14 @@
+<div class="list-group">
+  <a  routerLink="/books" class="list-group-item"   
+     routerLinkActive="bg-primary text-white font-weight-bold" data-toggle="tooltip" data-placement="top" title=" click for all books ">
+     All Books</a> 
+  <a  [routerLink]="'/booksCategory/'+category.id" class="list-group-item"  *ngFor="let category of categories" 
+     routerLinkActive="bg-primary text-white font-weight-bold" data-toggle="tooltip" data-placement="top" title=" click for books of {{category.categoryName}}">
+     {{category.categoryName}}</a>     
+</div>
+<!-- jquery code for adding tooltips to controls  -->
+<script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>

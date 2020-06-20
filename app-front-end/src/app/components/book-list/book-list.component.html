@@ -1,0 +1,82 @@
+    <!-- spinner for page loading -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-scale-multiple" fullScreen="false">
+  <p style="font-size: 20px; color: white">Loading...</p>
+   <!-- /spinner -->
+</ngx-spinner>
+<div class="container mt-4 ">
+
+  <div class="row ">
+
+    <div class="col-lg-3 ">
+
+      <app-categories></app-categories>
+
+    </div>
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-9">
+      <div class="row ">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 float-left" *ngFor="let book of books">
+            <div class="card h-100 ">
+              <a (click)="bookDetails(book.id)"><img class="card-img-top " [src]="book.imageUrl" data-toggle="tooltip"
+                  data-placement="top" title="click for details"></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a id="book-name" (click)="bookDetails(book.id)" data-toggle="tooltip" data-placement="top"
+                    title="click for details">{{book.name}}</a>
+                </h4>
+                <h5>{{book.price | currency :' $ '}}</h5>
+
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-primary float-left" data-toggle="tooltip" data-placement="top"
+                  title="show details" (click)="bookDetails(book.id)">
+                  <i class="fas fa-info-circle mr-2"></i>Show Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="books?.length==0" class="alert alert-warning">
+        <h2>No Books Matches Your Search</h2>
+      </div>
+      <div class="row m-4">
+        <div class="col-md-6">
+          <div class="row" [class.d-none]="books?.length==0">
+
+            <span class="mr-2">Page Size</span>
+            <select (change)="changePageSize($event.target.value)" class="form-control-sm" data-toggle="tooltip"
+              data-placement="top" title="select number of elements per page">
+              <option selected>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6" [class.d-none]="books?.length==0">
+           <!-- pagination selector  -->
+          <ngb-pagination [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="totalElements"
+            (pageChange)="showBooks()" boundaryLinks="true" maxSize="3" class="d-flex justify-content-end">
+            <ng-template ngbPaginationPrevious>prev</ng-template>
+            <ng-template ngbPaginationNext>next</ng-template>
+            <ng-template ngbPaginationFirst>first</ng-template>
+            <ng-template ngbPaginationLast>last</ng-template>
+            <!-- /pagination selector  -->
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+  <!-- /.container -->
+</div>
+<!-- jquery code for adding tooltips to controls  -->
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip({})
+  })
+</script>

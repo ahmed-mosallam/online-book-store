@@ -1,0 +1,210 @@
+<div class="container  mt-4 mb-4">
+
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">{{totalQuantity}}</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed"
+                     *ngFor="let cartItem of cartItems">
+                    <div>
+                        <h6 class="my-0">{{cartItem.name}}</h6>
+                        <small class="text-muted">Quantity : {{cartItem.quantity}}</small>
+                    </div>
+                    <span class="text-muted">price : {{cartItem.price | currency}}</span>
+                </li>
+               
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>{{totalPrice | currency}}</strong> 
+                </li>
+            </ul>
+ 
+        </div>
+           <!-- ckeckout form -->
+        <div class="col-md-8 order-md-1 mb-4">
+            <form [formGroup]="checkoutForm">
+                <h3>Customer Details</h3>
+                <!-- customer -->
+                <div formGroupName="customer">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>
+                                first name
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>
+                               last name
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>
+                               e-mail
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="email" placeholder="you@example.com">
+                        </div>
+                    </div>
+                    <!-- customer -->
+                </div>
+                <hr class="font-weight-bold">
+                 <!-- shippingAddress -->
+                <div formGroupName="shippingAddress">
+                    <h3>Shipping Address</h3>
+                    <div class=" row form-group ">
+                        <div class="col-md-2">
+                            <label>
+                               address
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="address" placeholder="1234 Main St">
+                        </div>
+                    </div>
+                    <!-- in-line controls-->
+                    <div class="row">
+                         <div class="col-md-3">
+                              <label>country</label>
+                              <select class="custom-select d-block w-100" formControlName="country">
+                                <option value="">Choose...</option>
+                                <option>Egypt</option>
+                              </select>
+                         </div>
+                         <div class="col-md-3">
+                            <label>state</label>
+                            <select class="custom-select d-block w-100" formControlName="state">
+                                <option value="">Choose...</option>
+                                <option>cairo</option>
+                              </select>
+                         </div>
+                         <div class="col-md-2">
+                              <label>zip</label>
+                              <input type="text" class="form-control" formControlName="zipCode">
+                         </div>
+                     <!-- in-line controls-->
+                    </div>
+                     <!-- shippingAddress -->
+                </div>
+                <hr>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-control mr-2" (change)="onChange($event)">
+                  <label>Shipping address is the same as my billing address</label>
+                </div>
+                <hr>
+                  <!-- billingAddress -->
+                  <div formGroupName="billingAddress">
+                    <h3>Billing Address</h3>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label>
+                              address
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="address"  placeholder="1234 Main St">
+                        </div>
+                    </div>
+                    <!-- in-line controls-->
+                    <div class="row">
+                         <div class="col-md-3">
+                              <label>country</label>
+                              <select class="custom-select d-block w-100" formControlName="country">
+                                <option value="">Choose...</option>
+                                <option>Egypt</option>
+                              </select>
+                         </div>
+                         <div class="col-md-3">
+                            <label>state</label>
+                            <select class="custom-select d-block w-100" formControlName="state">
+                                <option value="">Choose...</option>
+                                <option>cairo</option>
+                              </select>
+                         </div>
+                         <div class="col-md-2">
+                              <label>zip</label>
+                              <input type="text" class="form-control" formControlName="zipCode">
+                         </div>
+                     <!-- in-line controls-->
+                    </div>
+                     <!-- billingAddress -->
+                </div>
+                <hr>
+                <!-- credit card -->
+                <div formGroupName="creditCard">
+                    <h3>Credit Card</h3>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label>
+                              card type
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="custom-select d-block w-100" formControlName="cardType">
+                                <option value="">Choose...</option>
+                                <option>payPal</option>
+                              </select>
+                        </div>
+                    </div>
+                   <!-- customer info in-line controls-->
+                    <div class="row mb-2">
+                         <div class="col-md-4">
+                              <label>name on card</label>
+                              <input type="text" class="form-control" formControlName="nameOnCard">
+                         </div>
+                         <div class="col-md-4">
+                            <label>credit card number</label>
+                            <input type="text" class="form-control" formControlName="cardNumber">
+                         </div>
+                        
+                     <!-- customer info in-line controls-->
+                    </div>
+                     <!-- card info in-line controls-->
+                     <div class="row">
+                        <div class="col-md-3">
+                             <label>expiration month</label>
+                             <select class="custom-select d-block w-100" formControlName="expirationDate">
+                               <option value="">Choose...</option>
+                               <option>Egypt</option>
+                             </select>
+                        </div>
+                        <div class="col-md-3">
+                           <label>expiration year</label>
+                           <select class="custom-select d-block w-100" formControlName="expirationYear">
+                               <option value="">Choose...</option>
+                               <option>cairo</option>
+                             </select>
+                        </div>
+                        <div class="col-md-2">
+                             <label>cvv</label>
+                             <input type="text" class="form-control" formControlName="cvv">
+                        </div>
+                     <!-- card info in-line controls-->
+                   </div>
+                     <!-- credit card -->
+                </div>
+                 <!-- buttons -->
+                 <div class="form-group mt-4">
+                      <button type="submit" class="btn btn-primary mr-2">Purchase</button>
+                      <a routerLink="/books" class="btn btn-primary ">Homepage</a>
+                 </div>
+            </form>
+              <!-- ckeckout form -->
+        </div>
+          <!-- row -->
+    </div>
+     <!-- container -->
+</div>

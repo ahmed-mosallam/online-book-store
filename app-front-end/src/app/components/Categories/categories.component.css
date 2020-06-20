@@ -1,0 +1,12 @@
+.selected{
+    background: blue;
+    color: white;
+    font-weight: bold;
+    
+}
+a:hover{
+    background-color:grey;
+    font-weight: bold;
+    color:white;
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+a:hover{
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+}   
+select{
+    width: 15%;
+    cursor: pointer;
+}
+option{
+    cursor: pointer;
+}
+#book-name:hover{
+    background-color:rgb(70, 130, 255);
+    color: white;
+    cursor: pointer;
+}

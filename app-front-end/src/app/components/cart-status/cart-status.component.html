@@ -1,0 +1,12 @@
+<a routerLink ="/cart-details"class="btn btn-warning font-weight-bold mr-1"
+data-toggle="tooltip" data-placement="top" title="show cart details">
+    {{totalPrice | currency:" $ "}}
+    <span class="badge badge-light mr-1">{{totalQuantity}}</span>
+    <i class="fas fa-cart-arrow-down text-white"></i>
+</a>
+  <!-- jquery code for adding tooltips to controls  -->
+<script>    
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
